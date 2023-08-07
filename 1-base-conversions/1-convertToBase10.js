@@ -3,8 +3,38 @@
 /******************************************************************************/
 
 const convertToBase10 = str => {
-  // Your code here
-};
+  let number;
+  let index;
+  let binary;
+  let hexadecimal
+  let sum = 0;
+
+  const hexValues = { 0: 0, 1: 1, 2: 2, 3: 3, 4:4, 5:5, 6:6, 7:7, 8:8, 9:9, A: 10, B: 11, C: 12, D: 13, E: 14, F: 15}
+
+  if(str[1] === 'b'){
+    number = str.slice(2)
+    for(let i = number.length - 1; i >= 0; i--){
+      let digit = number[i];
+      index = (number.length - 1) - i;
+      binary = (2 ** index) * digit;
+      sum += binary
+    }
+  }
+
+
+  if(str[1] === 'x'){
+    number = str.toUpperCase().slice(2)
+    for(let i = number.length - 1; i >= 0; i--){
+      let digit = number[i];
+      
+      index = (number.length - 1) - i;
+      hexadecimal = (16 ** index) * hexValues[digit];
+      sum += hexadecimal;
+
+    }
+  };
+  return sum
+}
 
 /******************************************************************************/
 
